@@ -1,0 +1,28 @@
+#+TITLE: DRY. Decorators. FBV vs. CBV
+#+EMAIL: @pvavilin
+#+AUTHOR: @pvavilin
+#+OPTIONS: \n:t ^:nil
+* Принцип DRY
+  - D :: on't
+    /не/
+  - R :: epeat
+    /повторяй/
+  - Y :: ourself
+    /-ся/
+* Декораторы
+  #+begin_src python :exports code
+    C = Callable[[Any], Any]
+    Callable[[C], C]
+  #+end_src
+* Декораторы в Django
+  https://docs.djangoproject.com/en/4.2/topics/http/decorators/
+* Function Based View
+* Class Based View
+* Generic Based View
+* Схема выбора
+  #+ATTR_LATEX: :width .7\textwidth
+  [[file:flowchart.png]]
+* Дополнительная литература
+  - __[[https://python-patterns.guide/][Python Design Patterns]]__
+  - __[[https://testdriven.io/blog/django-class-based-vs-function-based-views/][Blog]]__
+  - __[[https://django.fun/ru/docs/django/4.0/topics/class-based-views/mixins/][Mixins]]__
