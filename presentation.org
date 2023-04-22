@@ -204,4 +204,5 @@
 * Дополнительная литература
   - __[[https://python-patterns.guide/][Python Design Patterns]]__
   - __[[https://testdriven.io/blog/django-class-based-vs-function-based-views/][Blog]]__
+  - __[[https://django.fun/ru/articles/tutorials/class-based-vs-function-based-views-in-django/][Перевод]]__
   - __[[https://django.fun/ru/docs/django/4.0/topics/class-based-views/mixins/][Mixins]]__
