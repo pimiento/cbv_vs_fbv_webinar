@@ -1,0 +1,13 @@
+<!-- registration/signup.html -->
+{% block content %}
+<h2>Зарегистрироваться</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Зарегистрироваться">
+</form>
+
+<a href="{% url 'login' %}">Войти</a>
+<a href="{% url 'task-list' %}">На главную</a>
+{% endblock %}

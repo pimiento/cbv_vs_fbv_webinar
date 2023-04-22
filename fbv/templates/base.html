@@ -10,6 +10,13 @@
         <style>body {font-family: "Arial", sans-serif}</style>
     </head>
     <body>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">{{ user.username }}: Выйти</a>
+
+        {% else %}
+        <a href="{% url 'login' %}">Войти</a>
+        {% endif %}
+        <br />
         {% block content %}{% endblock %}
     </body>
 </html>
