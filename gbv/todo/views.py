@@ -1,3 +1,4 @@
+# Generic Based Views
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
 
 from .models import Task
