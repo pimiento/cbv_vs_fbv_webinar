@@ -7,19 +7,15 @@ from django.views import View
 from .forms import TaskForm, ConfirmForm
 from .models import Task
 
-class TaskBaseView(View):
-    def get_task(self, pk):
-        task = get_object_or_404(Task, pk=pk)
-        return task
 
-class TaskListView(TaskBaseView):
+class TaskListView(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'todo/task_list.html', {
             'tasks': Task.objects.all(),
         })
 
-class TaskCreateView(LoginRequiredMixin, TaskBaseView):
+class TaskCreateView(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'todo/task_create.html', {
@@ -35,7 +31,7 @@ class TaskCreateView(LoginRequiredMixin, TaskBaseView):
         return self.get(request)
 
 
-class TaskDetailView(TaskBaseView):
+class TaskDetailView(View):
 
     def get(self, request, pk, *args, **kwargs):
         task = get_object_or_404(Task, pk=pk)
@@ -45,10 +41,10 @@ class TaskDetailView(TaskBaseView):
         })
 
 
-class TaskUpdateView(LoginRequiredMixin, TaskBaseView):
+class TaskUpdateView(View):
 
     def get(self, request, pk, *args, **kwargs):
-        task = self.get_task(pk)
+        task = get_object_or_404(Task, pk=pk)
         return render(request, 'todo/task_update.html', {
             'task': task,
             'form': TaskForm(instance=task),
@@ -64,17 +60,17 @@ class TaskUpdateView(LoginRequiredMixin, TaskBaseView):
         return self.get(request, pk)
 
 
-class TaskDeleteView(LoginRequiredMixin, TaskBaseView):
+class TaskDeleteView(View):
 
     def get(self, request, pk, *args, **kwargs):
-        task = self.get_task(pk)
+        task = get_object_or_404(Task, pk=pk)
         return render(request, 'todo/task_confirm_delete.html', {
             'task': task,
             'form': ConfirmForm(),
         })
 
     def post(self, request, pk, *args, **kwargs):
-        task = self.get_task(pk)
+        task = get_object_or_404(Task, pk=pk)
         form = ConfirmForm(data=request.POST)
         if form.is_valid():
             task.delete()
