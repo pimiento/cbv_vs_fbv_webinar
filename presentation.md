@@ -1,15 +1,16 @@
-- [Принцип DRY](#org96101c3)
-- [Декораторы](#org8c612e7)
-- [Декораторы в Django](#org424f4db)
-- [Function Based View](#org617c661)
-- [Class Based View](#org0cc1e99)
-- [Generic Based View](#org02d00f5)
-- [Схема выбора](#orgd0b9cbf)
-- [Дополнительная литература](#org05bf791)
+- [Принцип DRY](#org9a16f6d)
+- [Функции высшего порядка](#orgf832f5c)
+- [Декораторы](#orgb9869eb)
+- [Декораторы в Django](#orgeec7042)
+- [Function Based View](#org287ca94)
+- [Class Based View](#orga09deb9)
+- [Generic Based View](#orgc6fb94d)
+- [Схема выбора](#orgd3a2b59)
+- [Дополнительная литература](#orge5363fb)
 
 
 
-<a id="org96101c3"></a>
+<a id="org9a16f6d"></a>
 
 # Принцип DRY
 
@@ -21,24 +22,56 @@
     *-ся*
 
 
-<a id="org8c612e7"></a>
+<a id="orgf832f5c"></a>
+
+# Функции высшего порядка
+
+[Функции, принимающие на вход другие функции или возвращающие функцию в качестве результата](https://ru.wikipedia.org/wiki/%D0%A4%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F_%D0%B2%D1%8B%D1%81%D1%88%D0%B5%D0%B3%D0%BE_%D0%BF%D0%BE%D1%80%D1%8F%D0%B4%D0%BA%D0%B0)  
+
+```python
+def f(data, func):
+    return [func(e) for e in data]
+
+print(f([1, 2, 3], lambda x: x*2))
+```
+
+    [2, 4, 6]
+
+```python
+def f(x):
+    def w(y):
+        return x + y
+    return w
+plus_10 = f(10)
+print(plus_10(1))
+print(plus_10(113))
+```
+
+    11
+    123
+
+
+<a id="orgb9869eb"></a>
 
 # Декораторы
 
 ```python
+#
+# Callable[[Args], Result]
+#
 C = Callable[[Any], Any]
 Callable[[C], C]
 ```
 
 
-<a id="org424f4db"></a>
+<a id="orgeec7042"></a>
 
 # Декораторы в Django
 
 <https://docs.djangoproject.com/en/4.2/topics/http/decorators/>  
 
 
-<a id="org617c661"></a>
+<a id="org287ca94"></a>
 
 # Function Based View
 
@@ -107,7 +140,7 @@ def task_delete_view(request, pk):
 ```
 
 
-<a id="org0cc1e99"></a>
+<a id="orga09deb9"></a>
 
 # Class Based View
 
@@ -193,7 +226,7 @@ class TaskDeleteView(View):
 ```
 
 
-<a id="org02d00f5"></a>
+<a id="orgc6fb94d"></a>
 
 # Generic Based View
 
@@ -235,17 +268,18 @@ class TaskDeleteView(DeleteView):
 ```
 
 
-<a id="orgd0b9cbf"></a>
+<a id="orgd3a2b59"></a>
 
 # Схема выбора
 
 ![img](flowchart.png)  
 
 
-<a id="org05bf791"></a>
+<a id="orge5363fb"></a>
 
 # Дополнительная литература
 
 -   <span class="underline"><span class="underline">[Python Design Patterns](https://python-patterns.guide/)</span></span>
 -   <span class="underline"><span class="underline">[Blog](https://testdriven.io/blog/django-class-based-vs-function-based-views/)</span></span>
+-   <span class="underline"><span class="underline">[Перевод](https://django.fun/ru/articles/tutorials/class-based-vs-function-based-views-in-django/)</span></span>
 -   <span class="underline"><span class="underline">[Mixins](https://django.fun/ru/docs/django/4.0/topics/class-based-views/mixins/)</span></span>
