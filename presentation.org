@@ -2,6 +2,8 @@
 #+EMAIL: @pvavilin
 #+AUTHOR: @pvavilin
 #+OPTIONS: \n:t ^:nil
+* QR
+  [[file:qrcode.png]]
 * Принцип DRY
   - D :: on't
     /не/
