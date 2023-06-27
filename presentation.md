@@ -1,16 +1,16 @@
-- [Принцип DRY](#org9a16f6d)
-- [Функции высшего порядка](#orgf832f5c)
-- [Декораторы](#orgb9869eb)
-- [Декораторы в Django](#orgeec7042)
-- [Function Based View](#org287ca94)
-- [Class Based View](#orga09deb9)
-- [Generic Based View](#orgc6fb94d)
-- [Схема выбора](#orgd3a2b59)
-- [Дополнительная литература](#orge5363fb)
+- [Принцип DRY](#org5a83dfe)
+- [Функции высшего порядка](#org7129ef8)
+- [Декораторы](#orgb1eb113)
+- [Декораторы в Django](#orge720416)
+- [Function Based View](#org8333f73)
+- [Class Based View](#org6d951ae)
+- [Generic Based View](#orgc76da8b)
+- [Схема выбора](#org871b4f4)
+- [Дополнительная литература](#org355beaf)
 
 
 
-<a id="org9a16f6d"></a>
+<a id="org5a83dfe"></a>
 
 # Принцип DRY
 
@@ -22,7 +22,7 @@
     *-ся*
 
 
-<a id="orgf832f5c"></a>
+<a id="org7129ef8"></a>
 
 # Функции высшего порядка
 
@@ -35,7 +35,7 @@ def f(data, func):
 print(f([1, 2, 3], lambda x: x*2))
 ```
 
-    [2, 4, 6]
+    - [2, 4, 6]
 
 ```python
 def f(x):
@@ -47,11 +47,11 @@ print(plus_10(1))
 print(plus_10(113))
 ```
 
-    11
-    123
+    - 11
+    - 123
 
 
-<a id="orgb9869eb"></a>
+<a id="orgb1eb113"></a>
 
 # Декораторы
 
@@ -64,14 +64,14 @@ Callable[[C], C]
 ```
 
 
-<a id="orgeec7042"></a>
+<a id="orge720416"></a>
 
 # Декораторы в Django
 
 <https://docs.djangoproject.com/en/4.2/topics/http/decorators/>  
 
 
-<a id="org287ca94"></a>
+<a id="org8333f73"></a>
 
 # Function Based View
 
@@ -140,7 +140,7 @@ def task_delete_view(request, pk):
 ```
 
 
-<a id="orga09deb9"></a>
+<a id="org6d951ae"></a>
 
 # Class Based View
 
@@ -226,7 +226,7 @@ class TaskDeleteView(View):
 ```
 
 
-<a id="orgc6fb94d"></a>
+<a id="orgc76da8b"></a>
 
 # Generic Based View
 
@@ -268,14 +268,14 @@ class TaskDeleteView(DeleteView):
 ```
 
 
-<a id="orgd3a2b59"></a>
+<a id="org871b4f4"></a>
 
 # Схема выбора
 
 ![img](flowchart.png)  
 
 
-<a id="orge5363fb"></a>
+<a id="org355beaf"></a>
 
 # Дополнительная литература
 
